@@ -1,7 +1,7 @@
 package supermercado;
 
 public interface QueueTAD<E> {
-	void add(E element);
+	/*@ pure @*/ void add(E element);
 
 	E remove();
 
@@ -9,7 +9,7 @@ public interface QueueTAD<E> {
 
 	boolean isEmpty();
 
-	void clear();
+	/*@ pure @*/ void clear();
 
 	E element();
 }
