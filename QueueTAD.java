@@ -9,7 +9,7 @@ public interface QueueTAD<E> {
 
 	boolean isEmpty();
 
-	/*@ pure @*/ void clear();
+	void clear();
 
 	E element();
 }
