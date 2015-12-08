@@ -2,17 +2,31 @@ package supermercado;
 
 public class Caixa {
 	private /*@ spec_public nullable @*/ Cliente clienteAtual; // cliente sendo atendido no caixa
-	private int numeroAtendidos;
-
+	private /*@ spec_public @*/ int numeroAtendidos;
+	
+	/*@ 
+    @   assignable clienteAtual, numeroAtendidos; 
+    @	ensures clienteAtual == null && numeroAtendidos == 0; 	  
+   	@*/
 	public Caixa() {
 		clienteAtual = null;
 		numeroAtendidos = 0;
 	}
 
+	/*@ 
+    @   assignable clienteAtual; 
+    @   ensures clienteAtual == c;  	  
+   	@*/
 	public void atenderNovoCliente(Cliente c) {
 		clienteAtual = c;
 	}
-
+	
+	/*@ 
+	  @ assignable numeroAtendidos;
+	  @ assignable clienteAtual;
+	  @ ensures clienteAtual == null && numeroAtendidos == \old (numeroAtendidos  +1);
+	  @ ensures \result == \old (clienteAtual);
+ 	@*/
 	public Cliente dispensarClienteAtual() {
 		Cliente c = clienteAtual;
 		clienteAtual = null;
@@ -20,18 +34,31 @@ public class Caixa {
 		return c;
 	}
 
-	public boolean estaVazio() {
+	/*@ 
+	  @ assignable \nothing;
+	  @ ensures \result == (clienteAtual == null);
+	@*/
+	public /*@ pure @*/ boolean estaVazio() {
 		return (clienteAtual == null);
 	}
-
-	public Cliente getClienteAtual() {
+	
+	/*@ 
+	  @ requires clienteAtual != null;
+	  @ assignable \nothing;
+	  @ ensures \result == clienteAtual ;
+	@*/
+	public Cliente getClienteAtual() { 
 		Cliente retorno = new Cliente(0, 0);
 		if(clienteAtual != null)
 			retorno = clienteAtual;
 		return retorno;
 	}
-
-	public int getNumeroAtendidos() {
+	
+	/*@ 
+	  @ assignable \nothing;
+	  @ ensures \result == numeroAtendidos;
+ 	@*/
+	public /*@ pure @*/ int getNumeroAtendidos() {
 		return numeroAtendidos;
 	}
 }
