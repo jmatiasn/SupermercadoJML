@@ -1,7 +1,7 @@
 package supermercado;
 
 public interface QueueTAD<E> {
-	void add(E element);
+	/*@ pure @*/ void add(E element);
 
 	E remove();
 
