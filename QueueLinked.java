@@ -16,15 +16,10 @@ public class QueueLinked<E> implements QueueTAD<E> {
 	private /*@ spec_public nullable @*/ Node<E> head;
 	private /*@ spec_public nullable @*/ Node<E> tail;
 	private /*@ spec_public @*/int count;
-	
-	/*@
-	  @ assignable \nothing;
-	  @ ensures \result == head;
-	  @
-	  @*/
-	public /*@ pure @*/ Node<E> getHead(){
-		return head;
-	}
+
+	//@ public initially head == null;
+	//@ public initially tail == null;
+	//@ public initially count == 0;
 
 	/*@
 	  @ 
@@ -37,6 +32,15 @@ public class QueueLinked<E> implements QueueTAD<E> {
 		head = null;
 		tail = null;
 		count = 0;
+	}
+	
+	/*@
+	  @ assignable \nothing;
+	  @ ensures \result == head;
+	  @
+	  @*/
+	public /*@ pure @*/ Node<E> getHead(){
+		return head;
 	}
 
 	/*@ also

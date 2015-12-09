@@ -17,6 +17,13 @@ public class Simulacao {
 	private /*@ spec_public @*/ boolean trace; // valor indica se a simulacao ira imprimir
 							// passo-a-passo os resultados
 
+	//@ public initially fila != null;
+	//@ public initially caixa != null;
+	//@ public initially geradorClientes != null;
+	//@ public initially statTemposEsperaFila != null;
+	//@ public initially statComprimentosFila != null;
+	//@ public initially trace == true || trace == false;
+	
 	/*@
 	  @ requires (t == true) || (t == false);
 	  @

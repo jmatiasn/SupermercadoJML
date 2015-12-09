@@ -7,6 +7,8 @@ package supermercado;
 public class SimuladorSupermercado {
 	private static /*@ spec_public @*/Simulacao sim ;
 	
+	//@ public initially sim != null;
+	
 	/*@ assignable sim;
 	  @ ensures sim == new Simulacao(true); 
 	@*/

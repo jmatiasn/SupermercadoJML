@@ -18,6 +18,10 @@ public class Cliente {
 	public /*@ nullable @*/ static final int tempoMinAtendimento = 5;
 	public /*@ nullable @*/ static final int tempoMaxAtendimento = 10;
 
+	//@ public initially numero >= 0;
+	//@ public initially instanteChegada >= 0;
+	//@ public initially tempoAtendimento >= 0;
+	
 	/*@ requires n >= 0 && c >=0;
 	  @
 	  @ assignable numero, instanteChegada, tempoAtendimento;

@@ -12,6 +12,9 @@ public class Acumulador {
 	private  /*@ spec_public @*/ double valor;
 	private  /*@ spec_public @*/ int contador;
 	
+	//@ public initially valor == 0;
+	//@ public initially contador == 0;
+	
 	/*@ 
     @   assignable valor; 
     @   assignable contador; 

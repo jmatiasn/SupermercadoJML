@@ -13,6 +13,10 @@ public class GeradorClientes {
 	private /*@ spec_public @*/ int quantidadeGerada;
 	private /*@ spec_public @*/ static final Random gerador = new Random(); // gerador de numeros
 														// aleatorios de Java
+	
+	//@ public initially probabilidade >= 0;
+	//@ public initially quantidadeGerada == 0;
+	
 	/*@ 
     @   assignable probabilidade; 
     @   assignable quantidadeGerada;  	

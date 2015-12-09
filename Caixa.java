@@ -6,6 +6,9 @@ public class Caixa {
 	private /*@ spec_public nullable @*/ Cliente clienteAtual; // cliente sendo atendido no caixa
 	private /*@ spec_public @*/ int numeroAtendidos;
 	
+	//@ public initially clienteAtual == null;
+	//@ public initially numeroAtendidos == 0;
+	
 	/*@ 
     @   assignable clienteAtual, numeroAtendidos; 
     @	ensures clienteAtual == null && numeroAtendidos == 0; 	  
