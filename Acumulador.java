@@ -6,6 +6,9 @@ package supermercado;
 
 
 public class Acumulador {
+	//@ public invariant valor >= 0;
+	//@ public invariant contador >= 0;
+	
 	private  /*@ spec_public @*/ double valor;
 	private  /*@ spec_public @*/ int contador;
 	

@@ -3,6 +3,10 @@ package supermercado;
 import java.util.Random;
 
 public class Cliente {
+	//@ public invariant numero >= 0;
+	//@ public invariant instanteChegada >= 0;
+	//@ public invariant tempoAtendimento >= 0;
+	
 	private /*@ spec_public nullable @*/ int numero; // numero do cliente
 	private /*@ spec_public nullable @*/ int instanteChegada;
 	private /*@ spec_public nullable @*/ int tempoAtendimento; // quantidade

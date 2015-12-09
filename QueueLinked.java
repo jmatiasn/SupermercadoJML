@@ -1,6 +1,7 @@
 package supermercado;
 
 public class QueueLinked<E> implements QueueTAD<E> {
+	//@ public invariant count >= 0;
 	
 	private static final class Node<E> {
 		public /*@ nullable @*/ E element;
@@ -15,6 +16,15 @@ public class QueueLinked<E> implements QueueTAD<E> {
 	private /*@ spec_public nullable @*/ Node<E> head;
 	private /*@ spec_public nullable @*/ Node<E> tail;
 	private /*@ spec_public @*/int count;
+	
+	/*@
+	  @ assignable \nothing;
+	  @ ensures \result == head;
+	  @
+	  @*/
+	public /*@ pure @*/ Node<E> getHead(){
+		return head;
+	}
 
 	/*@
 	  @ 
@@ -63,48 +73,27 @@ public class QueueLinked<E> implements QueueTAD<E> {
 		tail = null;
 		count = 0;
 	}
-	
-<<<<<<< HEAD
+
 	/*@ also
 	  @ assignable \nothing;
 	  @ ensures \result == head.element;
 	  @*/
-=======
-	/* @ public normal_behavior
-	  @ 
-	  @
-	  @ 
-	  @ assignable \nothing;
-	  @ 
-	  @ ensures \result == head.element;
-	  @ 
-	  @ also
-	  @ 
-	  @ public exceptional_behavior
-	  @ 
-	  @ requires head.isEmpty();
-	  @ 
-	  @ assignable \nothing;
-	  @ 
-	  @ signals_only EmptyQueueException;
-	  @ 
-	  @ signals (EmptyQueueException e);
-	  @ */
->>>>>>> 5e9b31160fa109aaf07d18859484c7167af646ea
 	public /*@ pure @*/ E element() {
-		if (isEmpty())
-			throw new EmptyQueueException();
-		return head.element;
+		E element = null;
+		try{
+			element = head.element;
+		} catch (EmptyQueueException e) {
+			
+		}
+		return element; 
 	}
 
-<<<<<<< HEAD
 	/*@ also
 	  @
 	  @ requires element != null && head == null;
 	  @ assignable head, tail, count;
 	  @ ensures tail == head && count == \old (count + 1);
 	  @*/
-=======
 	/* @ also
 	  @
 	  @ requires element != null;
@@ -114,7 +103,6 @@ public class QueueLinked<E> implements QueueTAD<E> {
 	  @ ensures tail != null && count == \old (count + 1);
 	  @
 	  @ */
->>>>>>> 5e9b31160fa109aaf07d18859484c7167af646ea
 	public void add(E element) {
 		Node<E> n = new Node<E>(element);
 		if (head == null)

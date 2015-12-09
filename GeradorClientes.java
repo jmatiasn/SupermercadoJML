@@ -6,6 +6,9 @@ import java.util.Random;
  * Esta classe indica se um cliente sera gerado de acordo com a probabilidade indicada no construtor
  */
 public class GeradorClientes {
+	//@ public invariant probabilidade >= 0;
+	//@ public invariant quantidadeGerada >= 0;
+	
 	private /*@ spec_public @*/double probabilidade;
 	private /*@ spec_public @*/ int quantidadeGerada;
 	private /*@ spec_public @*/ static final Random gerador = new Random(); // gerador de numeros

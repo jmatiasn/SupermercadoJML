@@ -47,6 +47,26 @@ public class Simulacao {
 		}
 	}
 
+	/*@
+	  @ requires caixa.estaVazio() && !fila.isEmpty();
+	  @ assignable caixa, fila, statTemposEsperaFila;
+	  @ ensures caixa.getClienteAtual() == fila.element() &&
+	  			statTemposEsperaFila.getValor() == \old (statTemposEsperaFila.getValor()) +
+	  				tempo - caixa.getClienteAtual().getInstanteChegada();
+	  @
+	  @ also
+	  @
+	  @ requires !caixa.estaVazio() && caixa.getClienteAtual().getTempoAtendimento() == 0;
+	  @ assignable caixa;
+	  @ ensures caixa.getNumeroAtendidos() == \old (caixa.getNumeroAtendidos()) + 1;
+	  @
+	  @ also
+	  @ 
+	  @ requires !caixa.estaVazio() && caixa.getClienteAtual().getTempoAtendimento() != 0;
+	  @ assignable caixa;
+	  @ ensures caixa.getClienteAtual().getTempoAtendimento() ==
+	  				\old (caixa.getClienteAtual().getTempoAtendimento()) - 1;
+	  @*/
 	private void verificaCaixaVazio(int tempo) {
 		// TODO Auto-generated method stub
 		// verificar se o caixa esta vazio

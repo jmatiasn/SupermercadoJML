@@ -1,6 +1,8 @@
 package supermercado;
 
 public class Caixa {
+	//@ public invariant numeroAtendidos >= 0;
+	
 	private /*@ spec_public nullable @*/ Cliente clienteAtual; // cliente sendo atendido no caixa
 	private /*@ spec_public @*/ int numeroAtendidos;
 	
@@ -47,7 +49,7 @@ public class Caixa {
 	  @ assignable \nothing;
 	  @ ensures \result == clienteAtual ;
 	@*/
-	public Cliente getClienteAtual() { 
+	public /*@ pure @*/ Cliente getClienteAtual() { 
 		Cliente retorno = new Cliente(0, 0);
 		if(clienteAtual != null)
 			retorno = clienteAtual;
